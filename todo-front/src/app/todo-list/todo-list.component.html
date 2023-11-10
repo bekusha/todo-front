@@ -6,7 +6,7 @@
       <mat-checkbox [(ngModel)]="todo.done"></mat-checkbox>
       <span mat-menu-trigger [matMenuTriggerFor]="menu" [ngClass]="todo.done ? 'line': ''" >{{ todo.title }}</span>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>{{ todo.description }}</button>
+        <button mat-menu-item [routerLink]="['todos/', todo._id]">{{ todo.description }}</button>
       </mat-menu>
     </mat-list-item>
   </mat-list>
