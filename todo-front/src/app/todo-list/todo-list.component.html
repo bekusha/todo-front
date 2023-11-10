@@ -1,4 +1,7 @@
-<div>
+<mat-toolbar class="header">
+  <span>Todo App</span>
+</mat-toolbar>
+<div class="container">
   <mat-form-field class="example-form-field">
     <mat-label>Clearable input</mat-label>
     <input matInput type="text" [(ngModel)]="inputValue">
@@ -6,14 +9,9 @@
       <mat-icon>close</mat-icon>
     </button>
     <button mat-raised-button color="primary" (click)="addTodo()">Add Todo</button>
+    
   </mat-form-field>
-  <!-- <mat-form-field class="example-form-field">
-    <mat-label>New Todo</mat-label>
-    <input matInput type="text" [(ngModel)]="newTodo.title" placeholder="Title">
-  </mat-form-field> -->
-
-  <!-- <button mat-raised-button color="primary" (click)="addTodo()">Add Todo</button> -->
-  <mat-card>
+<mat-card class="todoList">
     <mat-list>
       <mat-list-item *ngFor="let todo of todos">
         <mat-checkbox [(ngModel)]="todo.done"></mat-checkbox>

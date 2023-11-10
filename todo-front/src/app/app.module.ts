@@ -13,7 +13,8 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     AppRoutingModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
