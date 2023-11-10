@@ -11,11 +11,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { AppRoutingModule } from './app-routing.module';
+import {MatInputModule} from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     MatMenuModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

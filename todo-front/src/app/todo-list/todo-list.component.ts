@@ -10,6 +10,13 @@ import {MatMenuTrigger} from '@angular/material/menu'
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
+  inputValue: string = '';
+  newTodo: Todo = {
+   
+    title: '',
+    description: '',
+    done: false,
+  };
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   constructor(private todoService: TodoService){}
 
@@ -18,6 +25,14 @@ export class TodoListComponent implements OnInit {
       this.todos = todos
       console.log(todos)
     })
+    this.refreshTodos();
+  }
+
+  refreshTodos() {
+    this.todoService.getTodos().subscribe((todos) => {
+      this.todos = todos;
+      console.log(todos);
+    });
   }
 
   openMenu(event: MouseEvent, todo: Todo): void {
@@ -28,4 +43,24 @@ export class TodoListComponent implements OnInit {
     }
   }
 
+  addTodo() {
+    // Check if the input value is not empty
+    if (this.inputValue.trim()) {
+      // Set the title of the newTodo using the input value
+      this.newTodo.title = this.inputValue.trim();
+
+      // Call the addNewTodo function from the service
+      this.todoService.addNewTodo(this.newTodo).subscribe((newTodo) => {
+        // Assuming the server responds with the newly created todo
+        console.log('New Todo added:', newTodo);
+
+        // Clear the input value
+        this.inputValue = '';
+        this.refreshTodos();
+
+        // Refresh the list of todos
+        
+      });
+    }
+  }
 }
