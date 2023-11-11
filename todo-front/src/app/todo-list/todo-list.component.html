@@ -1,3 +1,4 @@
+<!-- todo-list.component.html -->
 <mat-toolbar class="header">
   <span>Todo App</span>
 </mat-toolbar>
@@ -5,20 +6,28 @@
   <mat-form-field class="example-form-field">
     <mat-label>Clearable input</mat-label>
     <input matInput type="text" [(ngModel)]="inputValue">
-    <button matSuffix mat-icon-button aria-label="Clear" *ngIf="inputValue" (click)="inputValue='';">
+    <button matSuffix mat-icon-button aria-label="Clear" *ngIf="selectedTodo ? selectedTodo : inputValue" (click)="inputValue='';">
       <mat-icon>close</mat-icon>
     </button>
-    <button mat-raised-button color="primary" (click)="addTodo()">Add Todo</button>
-    
+    <button mat-raised-button class="custom-button" (click)="addTodo()">Add Todo</button>
+    <button mat-raised-button class="custom-button" (click)="addTodo()">Add Description</button>
   </mat-form-field>
-<mat-card class="todoList">
-    <mat-list>
-      <mat-list-item *ngFor="let todo of todos">
+
+  <mat-card class="todoList">
+    <mat-list class="list">
+      <mat-list-item *ngFor="let todo of todos" class="listItem">
         <mat-checkbox [(ngModel)]="todo.done"></mat-checkbox>
-        <span mat-menu-trigger [matMenuTriggerFor]="menu" [ngClass]="todo.done ? 'line': ''">{{ todo.title }}</span>
+        <span mat-menu-trigger [matMenuTriggerFor]="menu" [ngClass]="todo.done ? 'line': ''">
+          {{ selectedTodo === todo ? '' : todo.title }}
+        </span>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item [routerLink]="['todos/', todo._id]">{{ todo.description }}</button>
+          <button mat-menu-item>{{ todo.description }}</button>
         </mat-menu>
+        <input matInput *ngIf="selectedTodo === todo" [(ngModel)]="selectedTodo.title" type="text">
+        <mat-icon *ngIf="selectedTodo !== todo" class="edit" (click)="editTodo(todo)">edit</mat-icon>
+        <mat-icon *ngIf="selectedTodo === todo" class="save" (click)="saveEdit()">save</mat-icon>
+        <mat-icon *ngIf="selectedTodo === todo" class="cancel" (click)="selectedTodo = null">cancel</mat-icon>
+        <mat-icon class="delete" (click)="openConfirmationDialog()">delete</mat-icon>
       </mat-list-item>
     </mat-list>
   </mat-card>
