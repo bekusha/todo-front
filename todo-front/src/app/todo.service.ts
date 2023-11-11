@@ -25,16 +25,13 @@ export class TodoService {
 
   editTodo(todo:Todo): Observable<Todo>{
     return this.http.put<Todo>(`${this.apiUrl}${todo._id}`, todo);
+    
   }
  
-  deleteTodoById(todoId: string): Observable<void> {
-    const url = `${this.apiUrl}${todoId}`;
-    return this.http.delete<void>(url).pipe(
-      catchError((error: any) => {
-        console.error('Error deleting todo:', error);
-        throw error;
-      })
-    );
+  deleteTodoById(id: string): Observable<void> {
+    console.log('delete service working')
+    return this.http.delete<void>(`${this.apiUrl}${id}`);
+    
   }
 
 }
