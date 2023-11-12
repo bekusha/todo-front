@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'https://tdappapi.onrender.com/todos'
+  private apiUrl = 'https://tdappapi.onrender.com/todos/'
   constructor(private http: HttpClient) { }
   
   getTodos(): Observable<Todo[]>{
