@@ -30,7 +30,7 @@ export class TodoService {
  
   deleteTodoById(id: string): Observable<void> {
     console.log('delete service working')
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}${id}/`);
     
   }
 
