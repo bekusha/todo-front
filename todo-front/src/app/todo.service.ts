@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'http://localhost:3000/todos/'
+  private apiUrl = 'https://tdappapi.onrender.com/todos'
   constructor(private http: HttpClient) { }
   
   getTodos(): Observable<Todo[]>{
@@ -32,6 +32,11 @@ export class TodoService {
     console.log('delete service working')
     return this.http.delete<void>(`${this.apiUrl}${id}`);
     
+  }
+
+  updateTodoStatus(todo:Todo | null, todoId:string | null): Observable<any> {
+    // Implement the logic to update the status of a todo in the backend
+    return this.http.put(`${this.apiUrl}/${todoId}`, todo);
   }
 
 }

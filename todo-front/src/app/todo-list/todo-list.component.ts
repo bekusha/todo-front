@@ -25,12 +25,15 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoService: TodoService, public dialog: MatDialog) {}
   
-  ngOnInit(): void {
-    this.refreshTodos();
-    if(this.selectedTodo){
-      this.inputValue = this.selectedTodo.description
-    }
+  
+ ngOnInit(): void {
+  
+  if(this.selectedTodo){
+    this.inputValue = this.selectedTodo.title
   }
+  this.refreshTodos();
+}
+  
 
   refreshTodos() {
     this.todoService.getTodos().subscribe((todos) => {
@@ -107,6 +110,30 @@ export class TodoListComponent implements OnInit {
       console.error('Selected todo is undefined or null');
     }
 }
+
+updateTodoStatus(todo : Todo | null): void {
+  todo
+  if (todo) {
+    const todoId = todo._id;
+
+    if (todoId) {
+      this.todoService.updateTodoStatus(todo, todoId).subscribe(() => {
+        // Assuming you want to do something here after updating the status
+        
+        this.refreshTodos();
+      });
+    } else {
+      console.error('Todo ID is undefined or null');
+    }
+  } else {
+    console.warn('Selected todo is undefined or null. Skipping update.');
+    // You might want to log a warning or take other appropriate actions here.
+  }
+}
+
+
+
+
   
   // addDescription(): void{
   //   if(this.inputValue.trim() && this.selectedTodo){
@@ -115,10 +142,10 @@ export class TodoListComponent implements OnInit {
   //   }
 
   // }
-  
+}
   
   
   
 
   
-}
+

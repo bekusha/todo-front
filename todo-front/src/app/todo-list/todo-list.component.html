@@ -15,7 +15,7 @@
   <mat-card class="todoList">
     <mat-list class="list">
       <mat-list-item *ngFor="let todo of todos" class="listItem">
-        <mat-checkbox [(ngModel)]="todo.done"></mat-checkbox>
+        <mat-checkbox [(ngModel)]="todo.done" (mouseenter)="todo" (change)="updateTodoStatus(todo)"></mat-checkbox>
         <span mat-menu-trigger  [ngClass]="todo.done ? 'line': ''">
           {{ selectedTodo === todo ? '' : todo.title }}
         </span>
