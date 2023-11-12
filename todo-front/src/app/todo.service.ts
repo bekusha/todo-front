@@ -16,7 +16,7 @@ export class TodoService {
   }
   
   getTodoById(id: string): Observable<Todo> {
-    return this.http.get<Todo>(`${this.apiUrl}${id}`);
+    return this.http.get<Todo>(`${this.apiUrl}/${id}`);
   }
   
   addNewTodo(newTodo: Todo): Observable<Todo[]>{
