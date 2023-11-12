@@ -27,6 +27,9 @@ export class TodoListComponent implements OnInit {
   
   ngOnInit(): void {
     this.refreshTodos();
+    if(this.selectedTodo){
+      this.inputValue = this.selectedTodo.description
+    }
   }
 
   refreshTodos() {
@@ -103,8 +106,15 @@ export class TodoListComponent implements OnInit {
     } else {
       console.error('Selected todo is undefined or null');
     }
-  }
+}
   
+  // addDescription(): void{
+  //   if(this.inputValue.trim() && this.selectedTodo){
+  //     this.selectedTodo.description = this.inputValue.trim()
+  //     this.inputValue = ''; 
+  //   }
+
+  // }
   
   
   

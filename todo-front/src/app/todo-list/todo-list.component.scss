@@ -17,14 +17,17 @@
 }
 
 .example-form-field{
-   width: 300px; 
-   
+   width: 330px; 
+   input{
+    font-size: 20px;
+  }
 }
 .todoList{
-    width: 300px;
+    width: 330px;
     height: 500px;
     overflow-y: scroll;
     position: relative;
+    font-size: 20px;
 }
 
 .custom-button {
@@ -42,4 +45,20 @@
   .edit{
     position: absolute;
     right: 40px;
+  }
+  @media only screen and (min-width: 768px){
+    .example-form-field{
+      width: 400px; 
+      height: 130px;
+      input{
+        font-size: 25px;
+      }
+      
+   }
+   .todoList{
+    width: 400px;
+    height: 500px;
+    overflow-y: scroll;
+    position: relative;
+}
   }
