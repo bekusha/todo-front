@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'https://tdappapi.onrender.com/todos/'
+  private apiUrl = 'https://tdappapi.onrender.com/todos'
   constructor(private http: HttpClient) { }
   
   getTodos(): Observable<Todo[]>{
@@ -20,17 +20,17 @@ export class TodoService {
   }
   
   addNewTodo(newTodo: Todo): Observable<Todo[]>{
-    return this.http.post<Todo[]>(`${this.apiUrl}new`, newTodo)
+    return this.http.post<Todo[]>(`${this.apiUrl}/new`, newTodo)
   }
 
   editTodo(todo:Todo): Observable<Todo>{
-    return this.http.put<Todo>(`${this.apiUrl}${todo._id}`, todo);
+    return this.http.put<Todo>(`${this.apiUrl}/${todo._id}`, todo);
     
   }
  
   deleteTodoById(id: string): Observable<void> {
     console.log('delete service working')
-    return this.http.delete<void>(`${this.apiUrl}${id}/`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
     
   }
 
