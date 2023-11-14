@@ -38,6 +38,7 @@ export class TodoListComponent implements OnInit {
   refreshTodos() {
     this.todoService.getTodos().subscribe((todos) => {
       this.todos = todos;
+      
     });
   }
 
